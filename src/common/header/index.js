@@ -4,10 +4,7 @@ import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, SearchWrapper,Action, But
 import { connect } from 'react-redux';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+    
     render() {
         return(
             <HeaderWrapper>
@@ -45,7 +42,7 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.focused
+        focused: state.header.focused
     }
 }
 
