@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, SearchWrapper,Action, Button } from './style'
 import { connect } from 'react-redux';
+import { actionCreators } from './store'
 
 class Header extends Component {
     
@@ -42,23 +43,17 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.header.focused
+        focused: state.getIn(['header','focused'])
     }
 }
 
 const mapDispathToProps = (dispatch) => {
     return {
         handleInputFocus: () => {
-            const action = {
-                type: 'search_focus_type'
-            }
-            dispatch(action);
+            dispatch(actionCreators.searchFocusAction());
         },
         handleInputBlur: () => {
-            const action = {
-                type: 'search_blur_type'
-            }
-            dispatch(action);
+            dispatch(actionCreators.searchBlurAction());
         }
     }
 }
