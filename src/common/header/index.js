@@ -1,8 +1,32 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group'
-import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, SearchWrapper,Action, Button } from './style'
+import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, SearchWrapper,Action, Button, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style'
 import { connect } from 'react-redux';
 import { actionCreators } from './store'
+
+const getSearchArea = (show) => {
+    if (show) {
+        return (
+            <SearchInfo>
+                <SearchInfoTitle>
+                    热门搜索
+                    <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                </SearchInfoTitle>
+                <SearchInfoList>
+                    <SearchInfoItem>11111</SearchInfoItem>
+                    <SearchInfoItem>11111</SearchInfoItem>
+                    <SearchInfoItem>11111</SearchInfoItem>
+                    <SearchInfoItem>11111</SearchInfoItem>
+                    <SearchInfoItem>11111</SearchInfoItem>
+                    <SearchInfoItem>11111</SearchInfoItem>
+                    <SearchInfoItem>11111</SearchInfoItem>
+                </SearchInfoList>
+            </SearchInfo>
+        )
+    }else {
+        return null;
+    }
+}
 
 class Header extends Component {
     
@@ -29,6 +53,9 @@ class Header extends Component {
                             />
                         </CSSTransition>
                             <i className={this.props.focused ? 'iconfont focused' : 'iconfont'}>&#xe614;</i>
+
+                            { getSearchArea(this.props.focused) }
+                            
                     </SearchWrapper>
 
                     <Action>
