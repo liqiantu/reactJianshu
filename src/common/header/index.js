@@ -4,30 +4,6 @@ import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, SearchWrapper,Action, But
 import { connect } from 'react-redux';
 import { actionCreators } from './store'
 
-const getSearchArea = (show) => {
-    if (show) {
-        return (
-            <SearchInfo>
-                <SearchInfoTitle>
-                    热门搜索
-                    <SearchInfoSwitch>换一批</SearchInfoSwitch>
-                </SearchInfoTitle>
-                <SearchInfoList>
-                    <SearchInfoItem>11111</SearchInfoItem>
-                    <SearchInfoItem>11111</SearchInfoItem>
-                    <SearchInfoItem>11111</SearchInfoItem>
-                    <SearchInfoItem>11111</SearchInfoItem>
-                    <SearchInfoItem>11111</SearchInfoItem>
-                    <SearchInfoItem>11111</SearchInfoItem>
-                    <SearchInfoItem>11111</SearchInfoItem>
-                </SearchInfoList>
-            </SearchInfo>
-        )
-    }else {
-        return null;
-    }
-}
-
 class Header extends Component {
     
     render() {
@@ -54,8 +30,8 @@ class Header extends Component {
                         </CSSTransition>
                             <i className={this.props.focused ? 'iconfont focused' : 'iconfont'}>&#xe614;</i>
 
-                            { getSearchArea(this.props.focused) }
-                            
+                            { this.getSearchArea() }
+
                     </SearchWrapper>
 
                     <Action>
@@ -66,11 +42,36 @@ class Header extends Component {
             </HeaderWrapper>
         )
     }
+
+    getSearchArea() {
+        if (this.props.focused) {
+            return (
+                <SearchInfo>
+                    <SearchInfoTitle>
+                        热门搜索
+                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                    </SearchInfoTitle>
+                    <SearchInfoList>
+                        {this.props.list.map((item) => {
+                            return (
+                                <SearchInfoItem key={item}>
+                                    {item}
+                                </SearchInfoItem>
+                            )
+                        })}
+                    </SearchInfoList>
+                </SearchInfo>
+            )
+        }else {
+            return null;
+        }
+    }
 }
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.getIn(['header','focused'])
+        focused: state.getIn(['header','focused']),
+        list: state.getIn(['header','list'])
     }
 }
 
@@ -78,6 +79,7 @@ const mapDispathToProps = (dispatch) => {
     return {
         handleInputFocus: () => {
             dispatch(actionCreators.searchFocusAction());
+            dispatch(actionCreators.getList());
         },
         handleInputBlur: () => {
             dispatch(actionCreators.searchBlurAction());
