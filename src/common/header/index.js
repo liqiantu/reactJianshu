@@ -71,19 +71,13 @@ class Header extends Component {
                             onClick={() => {
                                 handleChangePage(page,totalPage)
                             }}
-                        >换一批
+                        >
+                        <i className='iconfont'>&#xe851;</i>
+                        换一批
                         </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
-
-                        {/* {
-                            pageList.map((item) => {
-                                return item;
-                            })
-                        } */}
-
                         { pageList }
-
                     </SearchInfoList>
                 </SearchInfo>
             )
