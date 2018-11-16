@@ -5,7 +5,13 @@ import { fromJS } from 'immutable'
 // 不向外暴露的函数放在顶部
 const changeList = (list) => ({
     type: constants.CHANGE_LIST,
-    list: fromJS(list)
+    list: fromJS(list),
+    totalPage: Math.ceil(list.length / 10)
+});
+
+export const changePage = (page) => ({
+    type: constants.CHANGE_PAGE,
+     page
 });
 
 export const searchFocusAction = () => ({
@@ -14,6 +20,14 @@ export const searchFocusAction = () => ({
 
 export const searchBlurAction = () => ({
     type: constants.SEARCH_BLUR
+});
+
+export const mouseEnter = () => ({
+    type: constants.MOUSE_ENTER
+});
+
+export const mouseLeave = () => ({
+    type: constants.MOUSE_LEAVE
 });
 
 export const getList = () => {

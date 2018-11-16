@@ -30,9 +30,7 @@ class Header extends Component {
                             />
                         </CSSTransition>
                             <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe614;</i>
-
                             { this.getSearchArea() }
-
                     </SearchWrapper>
 
                     <Action>
@@ -45,22 +43,47 @@ class Header extends Component {
     }
 
     getSearchArea() {
-        const { focused, list } = this.props;
-        if (focused) {
+        const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+
+        const tempList = list.toJS();
+        const pageList = [];
+
+        if (tempList.length) {
+            for (let i = (page - 1) * 10 ; i < page * 10; i++ ) {
+                // 判断 是否存在内容
+                if (tempList[i]) {
+                    pageList.push(
+                        <SearchInfoItem key={tempList[i]}>{tempList[i]}</SearchInfoItem>
+                    )
+                }
+            }
+        }
+
+        if (focused || mouseIn) {
             return (
-                <SearchInfo>
+                <SearchInfo
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
                     <SearchInfoTitle>
                         热门搜索
-                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                        <SearchInfoSwitch
+                            onClick={() => {
+                                handleChangePage(page,totalPage)
+                            }}
+                        >换一批
+                        </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
-                        {list.map((item) => {
-                            return (
-                                <SearchInfoItem key={item}>
-                                    {item}
-                                </SearchInfoItem>
-                            )
-                        })}
+
+                        {/* {
+                            pageList.map((item) => {
+                                return item;
+                            })
+                        } */}
+
+                        { pageList }
+
                     </SearchInfoList>
                 </SearchInfo>
             )
@@ -73,7 +96,10 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         focused: state.getIn(['header','focused']),
-        list: state.getIn(['header','list'])
+        mouseIn: state.getIn(['header','mouseIn']),
+        list: state.getIn(['header','list']),
+        page: state.getIn(['header','page']),
+        totalPage: state.getIn(['header','totalPage'])
     }
 }
 
@@ -85,6 +111,20 @@ const mapDispathToProps = (dispatch) => {
         },
         handleInputBlur: () => {
             dispatch(actionCreators.searchBlurAction());
+        },
+        handleMouseEnter: () => {
+            dispatch(actionCreators.mouseEnter());
+        },
+        handleMouseLeave: () => {
+            dispatch(actionCreators.mouseLeave());
+        },
+        handleChangePage: (page,totalPage) => {
+            console.log('handleChangePage');
+            if (page < totalPage) {
+                dispatch(actionCreators.changePage(page + 1));
+            }else {
+                dispatch(actionCreators.changePage(1));
+            }
         }
     }
 }
