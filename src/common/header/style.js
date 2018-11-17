@@ -118,6 +118,7 @@ export const SearchInfoTitle = styled.div`
     font-size: 14px;
     line-height: 20px;
     color: #969696;
+    cursor: pointer;
 
     .spin {
         font-size: 12px;
