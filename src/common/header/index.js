@@ -29,7 +29,7 @@ class Header extends Component {
                                 onBlur={handleInputBlur}
                             />
                         </CSSTransition>
-                            <i className={focused ? 'iconfont focused' : 'iconfont'}>&#xe614;</i>
+                            <i className={focused ? 'iconfont focused zoom' : 'iconfont zoom'}>&#xe614;</i>
                             { this.getSearchArea() }
                     </SearchWrapper>
 
@@ -72,7 +72,7 @@ class Header extends Component {
                                 handleChangePage(page,totalPage)
                             }}
                         >
-                        <i className='iconfont'>&#xe851;</i>
+                        <i className='iconfont spin'>&#xe851;</i>
                         换一批
                         </SearchInfoSwitch>
                     </SearchInfoTitle>
