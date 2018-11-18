@@ -26,13 +26,15 @@ export const HomeRight = styled.div`
     padding-top: 30px;
 `;
 
+// topic 布局
 export const TopicWrapper = styled.div`
     padding: 20px 0 10px 0;
     overflow:hidden;
     margin-left: -18px;
+    border-bottom: 1px solid #dcdcdc;
 `;
 
-export const TopiceItem = styled.div`
+export const TopicItem = styled.div`
     float: left;
     height: 32px;
     line-height: 32px;
@@ -51,5 +53,36 @@ export const TopiceItem = styled.div`
         height: 32px;
         margin-right: 10px;
     }
-
 `;
+// topic 布局
+
+// list 布局
+export const ListItem = styled.div`
+    padding: 20px 0;
+    border-bottom: 1px solid #dcdcdc;
+    overflow: hidden;
+    .pic {
+        display: block;
+        float: right;
+        width: 125px;
+        height: 100px;
+        border-radius: 10px;
+    }
+`;
+
+export const ListInfo = styled.div`
+    width: 500px;
+    float: left;
+    .title {
+        line-height: 27px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+    .desc {
+        line-height: 24px;
+        font-size: 13px;
+        color: #999;
+    }
+`;
+// list 布局
