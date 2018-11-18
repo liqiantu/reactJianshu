@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Homewrapper = styled.div`
-    width: 960px;
+    width: 1000px;
     margin: 0 auto;
     overflow: hidden;
 `;
@@ -20,7 +20,7 @@ export const HomeLeft = styled.div`
 
 export const HomeRight = styled.div`
     height: 150px;
-    width: 240px;
+    width: 280px;
     float: right;
     margin-right:45px;
     padding-top: 30px;
@@ -86,3 +86,29 @@ export const ListInfo = styled.div`
     }
 `;
 // list 布局
+
+// recommend布局
+export const RecommendWrapper = styled.div`
+    /* margin: 30px 0; */
+    width: 280px;
+`;
+
+export const RecommendItem = styled.div`
+    width: 280px;
+    height: 50px;
+    background: url(${(props) => (props.imgUrl)});
+    background-size: contain;
+`;
+// recommend布局
+
+// writer布局
+export const WriterWrapper = styled.div`
+    margin-top: 20px;
+    border: 1px solid #dcdcdc;
+    width: 280px;
+    height: 280px;
+    line-height: 280px;
+    text-align: center;
+    border-radius: 3px;
+`;
+// writer布局
