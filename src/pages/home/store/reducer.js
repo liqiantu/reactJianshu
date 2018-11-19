@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable';
 import { constants} from './index';
-import axios from 'axios';
 
 const defaultState = fromJS(
     {
