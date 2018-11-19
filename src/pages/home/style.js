@@ -112,3 +112,17 @@ export const WriterWrapper = styled.div`
     border-radius: 3px;
 `;
 // writer布局
+
+// 获取更多布局
+export const LoadMore = styled.div`
+    margin: 20px 0;
+    width: 100%;
+    height: 40px;
+    background: #a5a5a5;
+    color: #fff;
+    border-radius: 20px;
+    text-align:center;
+    line-height: 40px;
+    cursor: pointer;
+`;
+// 获取更多布局
