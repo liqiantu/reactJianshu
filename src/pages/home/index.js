@@ -3,11 +3,9 @@ import List from './component/List';
 import Recommend from './component/Recommend';
 import Topic from './component/Topic';
 import Writer from './component/Writer';
-import axios from 'axios';
 import { connect } from 'react-redux';
-
+import { actionCreators } from './store';
 import { Homewrapper, HomeRight, HomeLeft } from  './style';
-import { dispatch } from 'rxjs/internal/observable/range';
 
 class Home extends Component {
     render() {
@@ -29,25 +27,14 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/home.json')
-        .then((result)=> {
-            const res = result.data.data;
-            const action = {
-                type: 'change_home_action',
-                articalList: res.articleList,
-                recommendList: res.recommendList,
-                topicList: res.topicList
-            };
-            this.props.changeHomeData(action);
-        })
-        .catch();
+        this.props.changeHomeData();
     }
 }
 
 const mapDispatch = (dispatch) => {
     return {
-        changeHomeData: (action) => {
-            dispatch(action);
+        changeHomeData: () => {
+            dispatch(actionCreators.getHomeInfo());
         }
     }
 };

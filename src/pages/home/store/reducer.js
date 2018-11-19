@@ -1,4 +1,6 @@
 import { fromJS } from 'immutable';
+import { constants} from './index';
+import axios from 'axios';
 
 const defaultState = fromJS(
     {
@@ -10,7 +12,7 @@ const defaultState = fromJS(
 
 export default (state = defaultState,action) => {
     switch(action.type) {
-        case 'change_home_action':
+        case constants.CHANGE_HOME_ACTION:
             return state.merge({
                 list: fromJS(action.topicList),
                 articalList: fromJS(action.articalList),

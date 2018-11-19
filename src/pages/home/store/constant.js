@@ -1,0 +1,1 @@
+export const CHANGE_HOME_ACTION = 'change_home_action';
