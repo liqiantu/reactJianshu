@@ -40,4 +40,9 @@ export const getMoreListItem = (page) => {
         })
         .catch();
         }
-    }
+}
+
+export const toggleScrollShow = (show) => ({
+    type: constants.TOGGLE_SHOW_ACTION,
+    show
+})

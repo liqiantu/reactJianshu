@@ -6,7 +6,8 @@ const defaultState = fromJS(
         list: [],
 		articalList: [],
         recommendList: [],
-        articlePage: 1
+        articlePage: 1,
+        showScroll: false
 	}
 );
 
@@ -26,6 +27,8 @@ export default (state = defaultState,action) => {
             })
             // return state.set('articalList',state.get('articalList').concat(action.list));
 
+        case constants.TOGGLE_SHOW_ACTION:
+            return state.set('showScroll',action.show);
         default:
             return state;
     }

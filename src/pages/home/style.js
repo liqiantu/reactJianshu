@@ -126,3 +126,17 @@ export const LoadMore = styled.div`
     cursor: pointer;
 `;
 // 获取更多布局
+
+// 返回顶部布局
+export const ToTopButton = styled.div`
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    border: 1px solid #dcdcdc;
+    cursor: pointer;
+`;
+// 返回顶部布局
