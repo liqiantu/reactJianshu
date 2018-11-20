@@ -64,7 +64,7 @@ const mapDispatch = (dispatch) => {
             dispatch(actionCreators.getHomeInfo());
         },
         changeScrollShow: () => {
-            console.log(document.documentElement.scrollTop);
+            // console.log(document.documentElement.scrollTop);
             if (document.documentElement.scrollTop > 100) {
                 dispatch(actionCreators.toggleScrollShow(true));
             }else {
