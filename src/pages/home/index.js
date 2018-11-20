@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import List from './component/List';
 import Recommend from './component/Recommend';
 import Topic from './component/Topic';
@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { actionCreators } from './store';
 import { Homewrapper, HomeRight, HomeLeft, ToTopButton } from  './style';
 
-class Home extends Component {
+class Home extends PureComponent {
 
     render() {
         const { showScroll } = this.props;
@@ -35,12 +35,20 @@ class Home extends Component {
         this.bindEvent();
     }
 
+    componentWillUnmount() {
+        this.removeEvent();
+    }
+
     handleScrollTop() {
         window.scrollTo(0,0);
     }
 
     bindEvent() {
-        window.addEventListener('scroll',this.props.changeScrollShow)
+        window.addEventListener('scroll',this.props.changeScrollShow);
+    }
+
+    removeEvent() {
+        window.removeEventListener('scroll',this.props.changeScrollShow);
     }
 }
 

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { CSSTransition } from 'react-transition-group'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, SearchWrapper,Action, Button, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style'
 import { connect } from 'react-redux';
 import { actionCreators } from './store'
 
-class Header extends Component {
+class Header extends PureComponent {
     
     render() {
         const { focused, handleInputBlur, handleInputFocus, list} = this.props;
