@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, SearchWrapper,Action, Button, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoItem, SearchInfoList } from './style'
 import { connect } from 'react-redux';
 import { actionCreators } from './store'
+import { Link } from 'react-router-dom'
 
 class Header extends PureComponent {
     
@@ -10,7 +11,9 @@ class Header extends PureComponent {
         const { focused, handleInputBlur, handleInputFocus, list} = this.props;
         return(
             <HeaderWrapper>
-                <Logo />
+                <Link to='/'>
+                    <Logo />
+                </Link>
                 <Nav>
                     <NavItem className='left active'>首页</NavItem>
                     <NavItem className='left'>下载App</NavItem>
