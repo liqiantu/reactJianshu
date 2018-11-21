@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 class Write extends PureComponent {
     render() {
-        const { logIn, isLogIn} = this.props;
+        const { isLogIn } = this.props;
         
         if (!isLogIn) {
             return <Redirect to='/login' />
