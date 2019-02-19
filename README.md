@@ -1,4 +1,4 @@
-### 1.慕课网 reac 简书项目学习demo   
+### 慕课网 reac 简书项目学习demo   
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
